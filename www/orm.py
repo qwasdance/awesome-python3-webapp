@@ -75,7 +75,7 @@ class StringField(Field):
     def __init__(self,name=None,primary_key=False,default=None,ddl='varchar(100)'):
         super().__init__(name, ddl, primary_key, default)
 
-class BooleanFueld(Field):
+class BooleanField(Field):
 
     def __init__(self,name=None,default=False):
         super().__init__(name,'boolean',False,default)
@@ -97,7 +97,7 @@ class TextField(Field):
 
 class ModelMetaclass(type):
 
-    def __new__(cls,name,bases,sttrs):
+    def __new__(cls,name,bases,attrs):
         if name=='Model':
             return type.__new__(cls,name,bases,attrs)
         tableName=attrs.get('__table__',None) or name
